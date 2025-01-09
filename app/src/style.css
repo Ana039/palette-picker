@@ -1,88 +1,76 @@
-
-
 * {
-  margin: 10;
-  padding : 0;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-
 
 body {
   font-family: Arial, sans-serif;
   background-color: #05501f;
   color: #ffffff;
-  margin: 10;
-  padding: 10;
   display: flex;
   flex-direction: column;
-  /* align-items: la; */
-  min-height: 100vh;
+  align-items: center;
+  justify-content: flex-start; 
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
-  display: flex;
-  justify-content: left;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #6af87d;
   box-shadow: 0 4px 8px rgba(41, 172, 27, 0.495);
-  
+  padding: 10px;
+  width: 100%;
+  text-align: center;
 }
 
 h2 {
-  display: flex;
-  justify-content: center;  
-  align-items: center;      
-  height: 100%;             
-}
-#app {
-  width: 50%;
-  max-width: 1200px;
-  margin: 50px auto;
-  
-  align-items: center;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
+#app {
+  width: 90%;
+  max-width: 1200px;
+  margin: 50px auto;
+}
 
 #palette-form {
   background-color: #009742;
-  display: flexbox;
   padding: 20px;
-  border-radius: 4%;
-  box-shadow: 0 4px 8px rgba(3, 0, 0, 0.495);
-  max-width: 390px;
-  justify-content: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+  margin: 50px auto 40px; 
 }
 
 #palette-form form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  min-height: 290px;
 }
 
-
-
-#palette-form input[type="color"] {
-  padding: 1px;
-  border: none;
-  border-radius: 4px;
-  outline: none;
-  font-size:1rem;
-}
-
+#palette-form input[type="color"],
 #palette-form input[type="text"] {
-  padding: 8px;
-  border: none;
-  outline: none;
-}
-
-#palette-form button {
   padding: 10px;
   border: none;
   border-radius: 4px;
+  font-size: 1rem;
+}
+
+#palette-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
   background-color: #07590e;
-  color: white;
+  color: #ffffff;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
   box-shadow: 0 4px 8px rgba(3, 0, 0, 0.176);
 }
 
@@ -90,9 +78,8 @@ h2 {
   background-color: #6af87d;
 }
 
-
 #palettes {
-  margin-top: 20px;
+  width: 100%;
 }
 
 .palette-container {
@@ -103,51 +90,75 @@ h2 {
 }
 
 .palette {
-  background-color: #444444;
+  background-color: #137705;
   border-radius: 8px;
   padding: 15px;
   width: 300px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .palette h3 {
-  text-align: center;
   font-size: 1.2rem;
+  margin-bottom: 10px;
 }
 
 .palette .colors {
   display: flex;
-  justify-content:space-around;
+  flex-direction: column;
   gap: 10px;
+  width: 100%;
 }
 
 .palette .color {
-  width: 80px;
-  height: 80px;
+  width: 100%;
+  height: 50px;
   border-radius: 4px;
   border: 1px solid #ffffff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.9rem;
+  text-transform: uppercase;
 }
 
 .palette button {
   padding: 8px;
   border: none;
-  border-radius: 9px;
-  background-color: #ff4d4d;
-  color: white;
-  font-size: 1rem;
+  border-radius: 4px;
+  background-color: #082d12;
+  color: #ffffff;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(7, 40, 3, 0.495);
 }
 
 .palette button:hover {
-  background-color: #00cc58;
+  background-color: #8ae1af;
 }
 
+.temperature {
+  margin-top: 10px;
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 4px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
 
-#palette-form legend {
-  display: flex;
+.temperature.warm {
+  background-color: #ff4d4d;
+}
 
-} 
+.temperature.cool {
+  background-color: #00b3ff;
+}
+
+.temperature.neutral {
+  background-color: #0c4718;
+}

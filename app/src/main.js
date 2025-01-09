@@ -1,47 +1,34 @@
-import { createPaletteElement } from './dom-helpers';
-import palettes from './Palettes.json';  
+import { renderPalettes } from './dom-helpers.js';
+import palettes from './palettes.json';  
+
+
+let currentPalettes = Object.values(palettes); 
 
 const paletteContainer = document.querySelector('.palette-container');
-const addPaletteForm = document.getElementById('add-palette-form');
-
-function loadPalettes() {
-  try {
-    paletteContainer.innerHTML = ''; 
-
-   
-    Object.values(palettes).forEach(palette => {
-      const paletteElement = createPaletteElement(palette);
-      paletteContainer.appendChild(paletteElement);
-    });
-  } catch (error) {
-    console.error("Error loading palettes:", error);
-  }
-}
+const form = document.querySelector('#add-palette-form');
+const titleInput = document.querySelector('#palette-title');
+const colorInputs = [document.querySelector('#color1'), document.querySelector('#color2'), document.querySelector('#color3')];
+const temperatureInputs = document.querySelectorAll('input[name="temperature"]');
 
 
-addPaletteForm.addEventListener('submit', (event) => {
-  event.preventDefault(); 
-
-  const title = document.getElementById('palette-title').value;
-  const color1 = document.getElementById('color1').value;
-  const color2 = document.getElementById('color2').value;
-  const color3 = document.getElementById('color3').value;
-  const temperature = document.querySelector('input[name="temperature"]:checked').value;
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
 
   
   const newPalette = {
     uuid: crypto.randomUUID(),  
-    title: title,
-    colors: [color1, color2, color3],
-    temperature: temperature,
+    title: titleInput.value,
+    colors: colorInputs.map((input) => input.value),
+    temperature: Array.from(temperatureInputs).find((input) => input.checked).value,
   };
 
 
-  const newPaletteElement = createPaletteElement(newPalette);
-  paletteContainer.appendChild(newPaletteElement);
+  currentPalettes.push(newPalette);
+  renderPalettes(currentPalettes, paletteContainer);  
+  
+  form.reset();
 
-  addPaletteForm.reset();
 });
 
 
-loadPalettes();
+renderPalettes(currentPalettes, paletteContainer);
